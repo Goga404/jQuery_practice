@@ -1,0 +1,33 @@
+/* сетка в footer */
+    $(document).ready(function() {
+        
+        function ftr_grid() {
+            
+            var foot_maxheight = 0;
+            var media = $(window).width();
+            
+           if (media > 320) {
+                    $(".span_1_of_4").each(function(i , elem) {
+                        if ($(elem).height() > foot_maxheight) {
+                            foot_maxheight = $(elem).height();
+                        }
+                    });
+                  /*  console.log(foot_maxheight); */
+                    $(".span_1_of_4").each(function() {
+                        $(this).css("height", foot_maxheight);
+                    });
+           }
+        }
+        
+        ftr_grid();
+        
+        $(window).resize(function(){
+            $(".span_1_of_4").each(function() {
+                        $(this).css("height", "auto");
+                    });
+            ftr_grid();
+        });
+    
+    
+    });
+    /* //сетка в footer */
