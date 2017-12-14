@@ -1,7 +1,6 @@
  /* popup script */
     function popup_offset (that, target) {
         var $top_offset = that.offset().top - 150;
-        console.log($top_offset);
          target.css("top", $top_offset);
     }
     
