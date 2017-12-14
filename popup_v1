@@ -1,0 +1,28 @@
+ /* popup script */
+    function popup_offset (that, target) {
+        var $top_offset = that.offset().top - 150;
+        console.log($top_offset);
+         target.css("top", $top_offset);
+    }
+    
+    //click button to open popup
+    
+    $(".tomail").click(function(){
+        $("#tomail").toggle();
+        $(".mail_popup").toggle();
+        popup_offset($(this), $(".mail_popup"));
+    });
+    
+    //click another button to open another popup
+    
+    $(".tofeedback").click(function(){
+        $("#tofeedback").toggle();
+        $(".feed_popup").toggle();
+        popup_offset($(this), $(".feed_popup"));
+    });
+    
+    $(".close_popup").click(function(){
+        $(this).parents(".form_popup").siblings(".popup_wrap").hide();
+        $(this).parents(".form_popup").toggle();
+    });
+    /* //popup script */
