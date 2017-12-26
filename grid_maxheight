@@ -1,28 +1,41 @@
- /* Height toMax */ 
-        function maxHeight (item) {
-            if(item.length){
-                (function(){
-                    var $maxHeight = 0;
+/* Height toMax */ 
+    function maxHeight (item) {
+        if(item.length){
+            (function(){
+                var $maxHeight = 0;
+                
+                 // n - number of items in row
+                var n = 2;
+                     if($(window).width() >= 1200) {
+                         n = 4;
+                     } else if($(window).width() < 1200 && $(window).width() > 768) {
+                         n = 3;
+                     } 
+                //target last row elements
+                 var $skipt = $(".fixheight").length - ($(".fixheight").length % n) - 1;
+                 
+                
+                item.find(".fixheight").each(function(){
+                    if($(this).index() > $skipt) { //disable change heith on last elements (in last row)
+                        return true;
+                    }
                     
-                    item.find(".fixheight").each(function(){
-                        if($(this).height() > $maxHeight) {
-                            $maxHeight = $(this).height();
-                        }
-                    });
+                    if($(this).height() > $maxHeight) {
+                        $maxHeight = $(this).height();
+                    }
+                });
                     
-                    item.find(".fixheight").each(function(){
+                 item.find(".fixheight").each(function(){
+                     if($(this).index() > $skipt) { //disable change heith on last elements (in last row)
+                        return true;
+                    }
                     
-                    //var n = number of elements in row;
-                    var $skipt = $(".fixheight").length - ($(".fixheight").length % n) - 1;
-                    
-                         if($(this).index() > $skipt) { //skip change height of elements in last row
-                            return true;
-                        }
-                        
-                        $(this).height($maxHeight);
-                    });
-                    
-                }());
-            }
+                    $(this).height($maxHeight);
+                });
+            }());
         }
+    }
+if($(window).width() > 768) {
+    maxHeight($(".footer-grids"));
+}    
 /* //Height toMax */ 
