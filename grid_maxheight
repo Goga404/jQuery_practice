@@ -9,7 +9,19 @@
                             $maxHeight = $(this).height();
                         }
                     });
-                    item.find(".fixheight").height($maxHeight);
+                    
+                    item.find(".fixheight").each(function(){
+                    
+                    //var n = number of elements in row;
+                    var $skipt = $(".fixheight").length - ($(".fixheight").length % n) - 1;
+                    
+                         if($(this).index() > $skipt) { //skip change height of elements in last row
+                            return true;
+                        }
+                        
+                        $(this).height($maxHeight);
+                    });
+                    
                 }());
             }
         }
